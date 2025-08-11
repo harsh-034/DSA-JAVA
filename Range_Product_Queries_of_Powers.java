@@ -92,3 +92,99 @@ class Solution {
     return result;
 }
 }
+
+
+
+
+/*  example 
+n = 13, queries = [[0,1],[1,2],[0,2]]
+
+Step 1: powers = [1, 4, 8]
+Step 2: prefix = [1, 4, 32]
+
+Query [0,1] → prefix[1] = 4  
+Query [1,2] → (prefix[2] / prefix[0]) = 32 / 1 = 32  
+Query [0,2] → prefix[2] = 32  
+
+Output: [4, 32, 32]
+
+
+
+Algorithm: 
+
+Start with an empty list powers.
+
+While n > 0:
+
+Find the largest power of 2 ≤ n.
+
+Add it to powers.
+
+Subtract it from n.
+
+Sort the list (optional if you always append and sort at the end).
+
+Return the array.'
+
+
+
+
+
+
+
+
+public int[] productQueries(int n, int[][] queries) {
+    final int MOD = 1_000_000_007;
+
+    // Step 1: Get all powers of 2 from n using bit manipulation
+    // Example: n = 13 (binary 1101) → powers = [1, 4, 8]
+    List<Integer> powers = new ArrayList<>();
+    for (int bit = 0; bit < 31; bit++) {
+        if ((n & (1 << bit)) != 0) {
+            powers.add(1 << bit);
+        }
+    }
+
+    // Step 2: Build prefix product array
+    int m = powers.size();
+    long[] prefix = new long[m];
+    prefix[0] = powers.get(0) % MOD;
+    for (int i = 1; i < m; i++) {
+        prefix[i] = (prefix[i - 1] * powers.get(i)) % MOD;
+    }
+
+    // Step 3: Answer each query
+    int[] ans = new int[queries.length];
+    for (int i = 0; i < queries.length; i++) {
+        int l = queries[i][0];
+        int r = queries[i][1];
+
+        if (l == 0) {
+            ans[i] = (int) prefix[r];
+        } else {
+            // Modular inverse to divide under modulo
+            long product = (prefix[r] * modInverse(prefix[l - 1], MOD)) % MOD;
+            ans[i] = (int) product;
+        }
+    }
+
+    return ans;
+}
+
+// Fast exponentiation to find modular inverse (Fermat's Little Theorem)
+private long modInverse(long a, int MOD) {
+    return modPow(a, MOD - 2, MOD);
+}
+
+private long modPow(long base, long exp, int MOD) {
+    long result = 1;
+    while (exp > 0) {
+        if ((exp & 1) == 1) result = (result * base) % MOD;
+        base = (base * base) % MOD;
+        exp >>= 1;
+    }
+    return result;
+}
+
+*/
+
