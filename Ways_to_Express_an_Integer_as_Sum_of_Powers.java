@@ -54,5 +54,13 @@ class Solution {
         return dp[n];
     }
 }
+// output 
+/*  
+r n = 10, x = 2:
 
+powers = [1, 4, 9]
+
+The only valid combination: 3² + 1² → output = 1
+
+*/
 
