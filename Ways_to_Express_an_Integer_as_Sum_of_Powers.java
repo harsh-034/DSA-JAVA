@@ -24,3 +24,35 @@ Explanation: We can express n in the following ways:
 - n = 31 + 11 = 4.
 
 */
+
+
+class Solution {
+    public int numberOfWays(int n, int x) {
+        final int MOD = 1_000_000_007;
+
+        
+        java.util.List<Integer> powers = new java.util.ArrayList<>();
+        int i = 1;
+        while (true) {
+            long val = (long) Math.pow(i, x); 
+            if (val > n) break;
+            powers.add((int) val);
+            i++;
+        }
+
+        
+        int[] dp = new int[n + 1];
+        dp[0] = 1; 
+
+        
+        for (int p : powers) {
+            for (int sum = n; sum >= p; sum--) {
+                dp[sum] = (dp[sum] + dp[sum - p]) % MOD;
+            }
+        }
+
+        return dp[n];
+    }
+}
+
+
