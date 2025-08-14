@@ -94,6 +94,19 @@ class Solution {
         return maxGood;
     }
 }
-substring(start, end) takes characters from position start to position end - 1 (end is excluded).
+
+
+substring(start, end) //takes characters from position start to position end - 1 (end is excluded).
+
+
+charAt(index) //returns the character at the given index (position).
+
+Indexing starts at 0:
+
+Index 0 → 1st character
+
+Index 1 → 2nd character
+
+Index 2 → 3rd character
 
 */
