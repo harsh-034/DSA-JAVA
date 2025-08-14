@@ -1,6 +1,8 @@
 
 // Largest 3-Same-Digit Number in String
 
+//LinK Leetcode : https://leetcode.com/problems/largest-3-same-digit-number-in-string/description/
+
 /*   qution
 You are given a string num representing a large integer. An integer is good if it meets the following conditions:
 
