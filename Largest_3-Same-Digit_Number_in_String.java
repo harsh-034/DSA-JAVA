@@ -109,4 +109,39 @@ Index 1 → 2nd character
 
 Index 2 → 3rd character
 
+
+
+class Solution {
+    public String largestGoodInteger(String num) {
+        String maxGood = ""; // To store the largest good integer found
+
+        // Loop through each starting index where we can take 3 characters
+        for (int i = 0; i <= num.length() - 3; i++) {
+            
+            // Take substring of length 3
+            String sub = num.substring(i, i + 3);
+
+            // Check if all three characters are same
+            if (sub.charAt(0) == sub.charAt(1) && sub.charAt(1) == sub.charAt(2)) {
+                
+                // If first good integer OR bigger than current maxGood → update
+                if (maxGood.equals("") || sub.compareTo(maxGood) > 0) {
+                    maxGood = sub;
+                }
+            }
+        }
+
+        return maxGood; // Return the largest good integer found
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        
+        String num = "6777133339";
+        String result = sol.largestGoodInteger(num);
+        
+        System.out.println("Output: " + result); 
+    }
+}
+
 */
