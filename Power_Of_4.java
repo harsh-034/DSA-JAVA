@@ -20,8 +20,27 @@ Constraints:
 -231 <= n <= 231 - 1
 */
 
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        if(n==0)
+        {
+            return false;
+        }
+        while(n%4==0)
+        {
+            n/=4;
+        }
+        return n == 1;
+    }
+}
 
-
+// Input
+// n =16]
+ 
+// Output
+// true
+// Expected
+// true
 
 
 
