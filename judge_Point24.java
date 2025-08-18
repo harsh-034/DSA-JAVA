@@ -1,4 +1,4 @@
-
+//Links Leetcode for qution:  https://leetcode.com/problems/24-game/
 /*
 You are given an integer array cards of length 4. You have four cards, each containing a number in the range [1, 9]. You should arrange the numbers on these cards in a mathematical expression using the operators ['+', '-', '*', '/'] and the parentheses '(' and ')' to get the value 24.
 
@@ -29,7 +29,7 @@ Topics: Array, Math, Backtracking
 
 
 
-class Solution {
+class judge_Point24 {
     public boolean judgePoint24(int[] cards) {
        
         double[] nums = new double[4];// convert int[] to double
