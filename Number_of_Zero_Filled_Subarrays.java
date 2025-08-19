@@ -29,3 +29,34 @@ Output: 0
 Explanation: There is no subarray filled with 0. Therefore, we return 0.
 
 */
+class Solution {
+    public long zeroFilledSubarray(int[] nums) {
+        long zero = 0;
+        long count = 0;
+        for(int i=0; i< nums.length; i++)
+        {
+            if(nums[i] == 0)
+            {
+                count++;
+        zero += count;
+            }else{
+                count = 0;
+            }
+
+        }
+        return zero;
+    }
+}
+
+
+//output 
+/*
+Input:
+nums = [1,3,0,0,2,0,0,4]
+Output:
+6
+Expected
+6
+
+
+*/
